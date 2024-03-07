@@ -23,9 +23,10 @@ class CartItem extends StatelessWidget {
     return Dismissible(
       key: ValueKey(id),
       onDismissed: (direction) {
-        Provider.of<Cart>(context /*, listen: false*/).removeItem(productID);
+        Provider.of<Cart>(context, listen: false).removeItem(productID);
       },
       confirmDismiss: (direction) {
+        
         return showDialog(
           context: context,
           builder: (context) {

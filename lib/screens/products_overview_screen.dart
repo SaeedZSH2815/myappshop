@@ -21,6 +21,7 @@ class ProductsOverViewScreen extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(
           clContext: context,
+          
           clTitle: MyAppConst.cAppTitle,
           clActions: [
             Consumer<Cart>(

@@ -9,7 +9,11 @@ class MyAppConst {
   void aShowSnackBar(BuildContext clCtx, String clMsg, int clDuration) {
     ScaffoldMessenger.of(clCtx).hideCurrentSnackBar();
     SnackBar snackBar = SnackBar(
-      content: Text(clMsg),
+      backgroundColor: Colors.black45,
+      content: Container(
+        child: Text(clMsg),
+        margin: EdgeInsets.all(10),
+      ),
       duration: Duration(milliseconds: clDuration),
       action: SnackBarAction(
         label: "UNDO ",

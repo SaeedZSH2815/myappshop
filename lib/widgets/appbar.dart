@@ -11,6 +11,7 @@ class MyAppBar extends AppBar {
       required this.clActions})
       : super(
             title: Text(clTitle),
+            iconTheme: IconThemeData(color: Colors.black),
             foregroundColor: Theme.of(clContext).appBarTheme.backgroundColor,
             elevation: 0.2,
             actions: clActions
