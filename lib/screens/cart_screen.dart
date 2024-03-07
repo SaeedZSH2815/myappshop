@@ -20,6 +20,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(clContext: context, clTitle: "clTitle", clActions: []),
       drawer: MyAppDrawer(),
+     
       body: Column(children: [
         Card(
             margin: EdgeInsets.all(15),

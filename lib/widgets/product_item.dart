@@ -37,15 +37,9 @@ class ProductItem extends StatelessWidget {
               icon: Icon(Icons.shopping_cart),
               onPressed: () {
                 lCart.addItem(product.id, product.price, product.title);
-                SnackBar snackBar = SnackBar(
-                  content: Text("add item"),
-                  duration: Duration(milliseconds: 2000),
-                  action: SnackBarAction(
-                    label: "UNDO ",
-                    onPressed: () {},
-                  ),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+                MyAppConst()
+                    .aShowSnackBar(context, "Add Item " + product.title, 1000);
               },
               color: Theme.of(context).colorScheme.secondary,
             ),
@@ -63,12 +57,17 @@ class ProductItem extends StatelessWidget {
             //     builder: (context) => ProductDetailScreen(aTitle: aTitle),
             // ));
           },
-          child: Image(
-            image: const CustomNetworkImage(
-                'https://flutter.github.io/assets-for-api-docs/assets/widgets/flamingos.jpg'),
-            width: 100,
-            height: 100,
-          ), //   Image.asset("assets/images/A.jpg"),
+          child: Image.network(
+            product.imageurl,
+            fit: BoxFit.cover,
+          ),
+
+          // Image(
+          //   image: const CustomNetworkImage(
+          //       'https://flutter.github.io/assets-for-api-docs/assets/widgets/flamingos.jpg'),
+          //   width: 100,
+          //   height: 100,
+          // ), //   Image.asset("assets/images/A.jpg"),
           // product.imageurl,
           // fit: BoxFit.cover,
         ),
