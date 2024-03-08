@@ -27,6 +27,15 @@ class MyAppDrawer extends StatelessWidget {
                 .pushReplacementNamed(MyAppConst.cOrdersScreenRouteName);
           },
         ),
+        Divider(),
+        ListTile(
+          leading: Icon(Icons.payment),
+          title: Text('Manage Product'),
+          onTap: () {
+            Navigator.of(context)
+                .pushReplacementNamed(MyAppConst.cUserProductsScreenRouteName);
+          },
+        ),
       ]),
     );
   }

@@ -5,6 +5,8 @@ class MyAppConst {
   static String cProductDetailScreenRouteName = "/ProductDetailScreen";
   static String cCartScreenRouteName = "/CartScreen";
   static String cOrdersScreenRouteName = "/OrdersScreen";
+  static String cUserProductsScreenRouteName = "/UserProductsScreen";
+  static String cEditProductScreenRouteName = "/EditProductScreen";
 
   void aShowSnackBar(BuildContext clCtx, String clMsg, int clDuration) {
     ScaffoldMessenger.of(clCtx).hideCurrentSnackBar();

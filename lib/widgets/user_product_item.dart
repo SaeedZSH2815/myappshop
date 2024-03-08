@@ -8,21 +8,24 @@ class UserProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),
+      title: Container(
+          child: Text(title),
+          width: 10,
+          constraints: BoxConstraints(minWidth: 0)),
       leading: CircleAvatar(
         backgroundImage: NetworkImage(imageurl),
       ),
-      trailing: Row(children: [
-        IconButton(
-            onPressed: () {},
-            color: Theme.of(context).primaryColor,
-            icon: Icon(Icons.edit)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
-        IconButton(
-            onPressed: () {},
-            color: Theme.of(context).colorScheme.error,
-            icon: Icon(Icons.add)),
-      ]),
+      trailing: Container(
+        width: 100,
+        constraints: BoxConstraints(minWidth: 110),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          IconButton(
+              onPressed: () {},
+              color: Theme.of(context).primaryColor,
+              icon: Icon(Icons.edit)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+        ]),
+      ),
     );
   }
 }
