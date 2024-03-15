@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import '../app_const/myapp_const.dart';
 
 class UserProductItem extends StatelessWidget {
+  final String id;
   final String title;
   final String imageurl;
+  final Function fnDeleteItem;
 
-  UserProductItem({required this.title, required this.imageurl});
+  UserProductItem(
+      {required this.id,
+      required this.title,
+      required this.imageurl,
+      required this.fnDeleteItem});
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -20,10 +27,15 @@ class UserProductItem extends StatelessWidget {
         constraints: BoxConstraints(minWidth: 110),
         child: Row(mainAxisSize: MainAxisSize.min, children: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                    MyAppConst.cEditProductScreenRouteName,
+                    arguments: id);
+              },
               color: Theme.of(context).primaryColor,
               icon: Icon(Icons.edit)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+          IconButton(
+              onPressed: () => fnDeleteItem(id), icon: const Icon(Icons.delete)),
         ]),
       ),
     );

@@ -5,35 +5,35 @@ import 'product.dart';
 class Products with ChangeNotifier {
   final List<Product> _items = [
     Product(
-        id: "p4",
+        id: "1",
         title: "A Pen",
         price: 90.0,
         description: "",
         imageurl:
             "https://www.soorban.com/images/news/2022/06/1655089602_T0bZ5.jpg"),
     Product(
-        id: "p5",
+        id: "2",
         title: "A Shert",
         price: 155.0,
         description: "",
         imageurl:
             "https://www.soorban.com/images/news/2022/06/1655089602_T0bZ5.jpg"),
     Product(
-        id: "p6",
+        id: "3",
         title: "A Shert",
         price: 155.0,
         description: "",
         imageurl:
             "https://www.soorban.com/images/news/2021/11/1636616854_C7gX4.jpg"),
     Product(
-        id: "p7",
+        id: "4",
         title: "A Shert",
         price: 155.0,
         description: "",
         imageurl:
             "https://xchap.com/60-thickbox_default/%DA%86%D8%A7%D9%BE-%D8%AA%DB%8C%D8%B4%D8%B1%D8%AA-%D9%85%D8%B4%DA%A9%DB%8C-%D8%B3%DB%8C%D8%A7%D9%87.jpg"),
     Product(
-        id: "p8",
+        id: "5",
         title: "A Shert",
         price: 155.0,
         description: "",
@@ -64,8 +64,32 @@ class Products with ChangeNotifier {
     notifyListeners();
   }
 
-  void addProduct() {
-    //_items.add(value)
+  void addProduct(Product clProduct) {
+    final lNewProduct = Product(
+        id: DateTime.now().toString(),
+        title: clProduct.title,
+        description: clProduct.description,
+        price: clProduct.price,
+        imageurl: clProduct.imageurl);
+    _items.add(lNewProduct);
+    notifyListeners();
+  }
+
+  void updateProduct(Product clProduct) {
+    final lNewProduct = Product(
+        id: DateTime.now().toString(),
+        title: clProduct.title,
+        description: clProduct.description,
+        price: clProduct.price,
+        imageurl: clProduct.imageurl);
+    _items.add(lNewProduct);
+    final lIndex = _items.indexWhere((element) => element.id == clProduct.id);
+    if (lIndex >= 0) _items[lIndex] = clProduct;
+    notifyListeners();
+  }
+
+  void deleteProduct(String clid) {
+    _items.removeWhere((element) => element.id == clid);
     notifyListeners();
   }
 }

@@ -5,8 +5,21 @@ import '../widgets/appbar.dart';
 import '../widgets/user_product_item.dart';
 import 'package:provider/provider.dart';
 
-class UserProductsScreen extends StatelessWidget {
+class UserProductsScreen extends StatefulWidget {
   const UserProductsScreen({super.key});
+
+  @override
+  State<UserProductsScreen> createState() => _UserProductsScreenState();
+}
+
+class _UserProductsScreenState extends State<UserProductsScreen> {
+  void deleteProduct(String clid) {
+    Provider.of<Products>(context, listen: false).deleteProduct(clid);
+
+    MyAppConst().aShowSnackBar(context, "clid:$clid", 1000);
+
+    print("clid" + clid);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +43,12 @@ class UserProductsScreen extends StatelessWidget {
               return Column(
                 children: [
                   UserProductItem(
-                      title: productsData.items[index].title,
-                      imageurl: productsData.items[index].imageurl),
+                    id: productsData.items[index].id,
+                    title: productsData.items[index].title,
+                    imageurl: productsData.items[index].imageurl,
+                    fnDeleteItem: deleteProduct,
+                    //  MyAppConst().aShowSnackBar(context, "Add Item ", 1000);
+                  ),
                   Divider(),
                 ],
               );
