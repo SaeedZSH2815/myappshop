@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 import '../app_const/myapp_const.dart';
@@ -6,9 +7,15 @@ import '../providers/orders.dart';
 import './providers/products.dart';
 import './providers/cart.dart';
 import 'screens/all_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 //import '../screens/user_products_screen';
 
-void main() {
+Future<void> main() async {
+  // await DotEnv.dotenv.load(fileName: "ap.env");
+  // String foo = DotEnv.dotenv.get('FOO');
+  await dotenv.load(fileName: "ap.env");
+  String foo = dotenv.get('FOO');
+  print(foo);
   runApp(const MyApp());
 }
 
