@@ -11,8 +11,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 //import '../screens/user_products_screen';
 
 Future<void> main() async {
-  // await DotEnv.dotenv.load(fileName: "ap.env");
-  // String foo = DotEnv.dotenv.get('FOO');
   await dotenv.load(fileName: "ap.env");
   String foo = dotenv.get('FOO');
   print(foo);
