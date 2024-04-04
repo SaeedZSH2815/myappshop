@@ -34,28 +34,29 @@ class MyAppDrawer extends StatelessWidget {
   }
 */
   void getholiday() {
-    String url = 'https://holidayapi.ir/jalali/1401/11/22';
+    String url = 'https://holidayapi.ir/jalali/1403/11/22';
     try {
       http.get(Uri.parse(url)).then((lResponse) {
         if (lResponse.statusCode == 200) {
           var j = json.decode(lResponse.body);
 
           Map<String, dynamic> jsonResponse = json.decode(lResponse.body);
+
           Hodiday lH = Hodiday.fromJson(jsonResponse);
           print(lH.toString());
-          // jsonResponse.forEach((key, value) {
-          //   if (key.toString() == 'events') {
-          //     //var tagsJson = json.decode(value)['events'];
-          //     final List<dynamic> successList = value;
-          //     for (var element in successList) {
-          //       print(element['description']);
-          //     }
-          //   }
-          // });
         }
       });
     } catch (e) {
       e.toString();
+    }
+
+    try {
+      url = 'http://127.0.0.1:5000';
+      http.get(Uri.parse(url)).then((value) => print('su ${value.body}'));
+
+      // then((value) => print());
+    } catch (e) {
+      print('saeed errr:${e}');
     }
   }
 
