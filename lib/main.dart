@@ -14,6 +14,19 @@ Future<void> main() async {
   await dotenv.load(fileName: "ap.env");
   String foo = dotenv.get('FOO');
   print(foo);
+  final PackageInfo info = await PackageInfo.fromPlatform();
+
+//  Future<Null> _initPackageInfo() async {
+//         final PackageInfo info = await PackageInfo.fromPlatform();
+//         setState(() {
+//           _packageInfo = info;
+//           packageName = info.packageName;
+//           appName = info.appName;
+//           buildNumber = info.buildNumber;
+//         });
+//       }
+
+
   runApp(const MyApp());
 }
 
