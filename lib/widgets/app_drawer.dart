@@ -34,6 +34,9 @@ class MyAppDrawer extends StatelessWidget {
   }
 */
   void getholiday() {
+    String url1 =
+        'https://myshop-df5c6-default-rtdb.firebaseio.com/products.json';
+    http.post(Uri.parse(url1), body: jsonEncode({'title': 'saaed'}));
     String url = 'https://holidayapi.ir/jalali/1403/11/22';
     try {
       http.get(Uri.parse(url)).then((lResponse) {
@@ -50,14 +53,14 @@ class MyAppDrawer extends StatelessWidget {
       e.toString();
     }
 
-    try {
-      url = 'http://127.0.0.1:5000';
-      http.get(Uri.parse(url)).then((value) => print('su ${value.body}'));
+    // try {
+    //   url = 'http://127.0.0.1:5000';
+    //   http.get(Uri.parse(url)).then((value) => print('su ${value.body}'));
 
-      // then((value) => print());
-    } catch (e) {
-      print('saeed errr:${e}');
-    }
+    //   // then((value) => print());
+    // } catch (e) {
+    //   print('saeed errr:${e}');
+    // }
   }
 
   @override

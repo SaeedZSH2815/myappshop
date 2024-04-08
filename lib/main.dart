@@ -15,8 +15,8 @@ Future<void> main() async {
   await dotenv.load(fileName: "ap.env");
   String foo = dotenv.get('FOO');
   print(foo);
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // WidgetsFlutterBinding.ensureInitialized();
+//  await Firebase.initializeApp();
   //final PackageInfo info = await PackageInfo.fromPlatform();
 
 //  Future<Null> _initPackageInfo() async {
