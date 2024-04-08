@@ -8,13 +8,16 @@ import './providers/products.dart';
 import './providers/cart.dart';
 import 'screens/all_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
+import 'package:firebase_core/firebase_core.dart';
 //import '../screens/user_products_screen';
 
 Future<void> main() async {
   await dotenv.load(fileName: "ap.env");
   String foo = dotenv.get('FOO');
   print(foo);
-  final PackageInfo info = await PackageInfo.fromPlatform();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  //final PackageInfo info = await PackageInfo.fromPlatform();
 
 //  Future<Null> _initPackageInfo() async {
 //         final PackageInfo info = await PackageInfo.fromPlatform();
@@ -25,7 +28,6 @@ Future<void> main() async {
 //           buildNumber = info.buildNumber;
 //         });
 //       }
-
 
   runApp(const MyApp());
 }
