@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'product.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Products with ChangeNotifier {
   final List<Product> _items = [
@@ -51,7 +53,17 @@ class Products with ChangeNotifier {
   }
 
   Product findbyID(String clID) {
-    return items.firstWhere((element) => element.id == clID);
+    if (clID == '0') {
+      return Product(
+          description: '',
+          id: '',
+          imageurl: '',
+          price: 0,
+          title: '',
+          isfav: false);
+    } else {
+      return items.firstWhere((element) => element.id == clID);
+    }
   }
 
   void showFavoriteOnly() {
@@ -65,13 +77,27 @@ class Products with ChangeNotifier {
   }
 
   void addProduct(Product clProduct) {
-    final lNewProduct = Product(
+    final url = Uri.parse(
+        'https://flutter-update-ca55a-default-rtdb.firebaseio.com/Products.json');
+    //ar url = Uri.https(
+    //  'https://myappshop-7cbe3-default-rtdb.firebaseio.com/Products.json');
+    http.post(url,
+        body: json.encode({
+          'id': '125',
+          'title': clProduct.title,
+          'description': clProduct.description,
+          'price': clProduct.price,
+          'imageurl': clProduct.imageurl
+        }));
+    /*final lNewProduct = Product(
         id: DateTime.now().toString(),
         title: clProduct.title,
         description: clProduct.description,
         price: clProduct.price,
         imageurl: clProduct.imageurl);
     _items.add(lNewProduct);
+
+     */
     notifyListeners();
   }
 

@@ -30,8 +30,9 @@ class _UserProductsScreenState extends State<UserProductsScreen> {
           MyAppBar(clContext: context, clTitle: "Your Products", clActions: [
         IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .pushNamed(MyAppConst.cEditProductScreenRouteName);
+              Navigator.of(context).pushNamed(
+                  MyAppConst.cEditProductScreenRouteName,
+                  arguments: '0');
             },
             icon: Icon(Icons.add))
       ]),
